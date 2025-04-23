@@ -11,6 +11,5 @@ class MediaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_media)
-
-        }
     }
+}

@@ -9,14 +9,28 @@
     android:orientation="vertical"
     android:padding="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/settings_head"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/settings"
-        android:layout_gravity="start"
-        android:textSize="22sp"
-        android:textColor="@color/icon"/>
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="65dp"
+            android:text="@string/settings"
+            android:textColor="@color/icon"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow"
+            app:iconGravity="textStart"
+            app:iconTint="@color/icon"/>
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/darkthemeswitch"
@@ -29,28 +43,24 @@
             android:layout_gravity="center_vertical|end"
             android:padding="14dp"/>
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/dark_theme"
             android:textColor="@color/icon"/>
-
-
     </FrameLayout>
 
     <FrameLayout
         android:id="@+id/sharebutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/share_app"
             android:textColor="@color/icon"/>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -63,15 +73,14 @@
     <FrameLayout
         android:id="@+id/supportbutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/support"
             android:textColor="@color/icon"/>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,15 +93,14 @@
     <FrameLayout
         android:id="@+id/useragreementbutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/user_agreement"
             android:textColor="@color/icon"/>
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
