@@ -5,14 +5,51 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/Settings.Theme.KotlinPlaylistMaker"
     tools:context=".SearchActivity">
 
-    <TextView
-        android:id="@+id/message"
+    <FrameLayout
+        android:id="@+id/settings_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/probelpotom"/>
+        android:layout_marginTop="14dp">
 
+        <TextView
+            style="@style/settingsMainText"
+            android:text="@string/search"
+            android:drawableStart="@drawable/arrow"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp">
+
+        <EditText
+            android:id="@+id/inputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:drawableStart="@drawable/minisearch"
+            android:drawablePadding="8dp"
+            android:hint="@string/search"
+            android:paddingStart="14dp"
+            android:inputType="text"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:background="@drawable/search_field"
+            tools:ignore="TouchTargetSizeCheck"/>
+        <ImageView
+            android:id="@+id/clear_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:src="@drawable/cancel"
+            android:paddingEnd="12dp"
+            android:background="@null"
+            android:visibility="gone"/>
+    </FrameLayout>
 </LinearLayout>

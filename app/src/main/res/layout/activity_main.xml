@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background"
     android:padding="16dp"
     android:gravity="center_vertical">
     <FrameLayout
@@ -17,8 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:text="@string/playlist"
-            android:textColor="@color/white"
-            android:textSize="22sp"/>
+            style="@style/mainText"/>
     </FrameLayout>
 
     <LinearLayout
@@ -30,57 +28,23 @@
 
         <Button
             android:id="@+id/search_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            app:backgroundTint="@color/white"
-            android:letterSpacing="0"
+            style="@style/buttonStyle"
             android:text="@string/search"
-            android:textAllCaps="false"
-            android:textColor="@color/icon"
-            android:textFontWeight="1"
-            android:textSize="22sp"
-            app:icon="@drawable/search"
-            app:iconGravity="textStart"
-            app:iconTint="@color/icon"
-            android:background="@drawable/main_round_button"/>
+            app:icon="@drawable/search"/>
 
         <Button
             android:id="@+id/media_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/buttonStyle"
             android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/main_round_button"
-            android:letterSpacing="0"
             android:text="@string/media"
-            android:textAllCaps="false"
-            android:textColor="@color/icon"
-            android:textFontWeight="0"
-            android:textSize="22sp"
-            app:icon="@drawable/mediateka"
-            app:iconGravity="textStart"
-            app:iconTint="@color/icon"
-            app:backgroundTint="@color/white"/>
+            app:icon="@drawable/mediateka"/>
 
         <Button
             android:id="@+id/settings_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/buttonStyle"
             android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:background="@drawable/main_round_button"
-            android:letterSpacing="0"
             android:text="@string/settings"
-            android:textAllCaps="false"
-            android:textColor="@color/icon"
-            android:textFontWeight="1"
-            android:textSize="22sp"
-            app:icon="@drawable/settings"
-            app:iconGravity="textStart"
-            app:iconTint="@color/icon"
-            app:backgroundTint="@color/white"/>
+            app:icon="@drawable/settings"/>
     </LinearLayout>
 
 </LinearLayout>
