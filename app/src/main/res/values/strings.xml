@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">KotlinPlaylistMaker</string>
+    <string name="title_hello">Привет, Практикум</string>
+    <string name="playlist" translatable="false">Playlist maker</string>
+    <string name="search" translatable="false">Поиск</string>
+    <string name="media" translatable="false">Медиатека</string>
+    <string name="settings" translatable="false">Настройки</string>
+    <string name="share_app" translatable="false">Поделиться приложением</string>
+    <string name="support" translatable="false">Написать в поддержку</string>
+    <string name="user_agreement" translatable="false">Пользовательское соглашение</string>
+    <string name="dark_theme" translatable="false">Темная тема</string>
+    <string name="probelpotom" translatable="false">А здесь ничего нет....</string>
+    <string name="gratitude" translatable="false">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+    <string name="message" translatable="false">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="email" translatable="false">rostovsamurai@yandex.ru</string>
+    <string name="link" translatable="false">https://yandex.ru/legal/practicum_offer/</string>
+
 </resources>
