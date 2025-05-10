@@ -16,6 +16,12 @@ class SettingsActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
+        val backbutton = findViewById<ImageButton>(R.id.back_button)
+        backbutton.setOnClickListener{
+            val backintent = Intent(this, MainActivity::class.java)
+            startActivity(backintent)
+        }
+
         val button = findViewById<ImageButton>(R.id.sharebutton)
         button.setOnClickListener {
             val shareintent = Intent(Intent.ACTION_SEND)

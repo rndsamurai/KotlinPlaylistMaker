@@ -16,8 +16,15 @@
 
         <TextView
             style="@style/settingsMainText"
-            android:text="@string/settings"
-            android:drawableStart="@drawable/arrow"/>
+            android:paddingStart="28dp"
+            android:text="@string/settings"/>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowback"
+            android:layout_gravity="center_vertical"
+            android:background="@null"/>
 
     </FrameLayout>
 
