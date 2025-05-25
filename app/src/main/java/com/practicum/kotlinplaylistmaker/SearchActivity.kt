@@ -86,8 +86,7 @@ class SearchActivity : AppCompatActivity() {
 
         val backbutton = findViewById<ImageButton>(R.id.back_button)
         backbutton.setOnClickListener{
-            val backintent = Intent(this, MainActivity::class.java)
-            startActivity(backintent)
+            finish()
         }
 
         val inputEditText = findViewById<EditText>(R.id.inputEditText)

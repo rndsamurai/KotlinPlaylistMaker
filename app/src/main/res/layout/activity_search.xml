@@ -45,6 +45,7 @@
             android:background="@drawable/search_field"
             android:drawableStart="@drawable/minisearch"
             android:drawablePadding="8dp"
+            android:textCursorDrawable="@color/background"
             android:hint="@string/search"
             android:inputType="text"
             android:maxLength="25"
