@@ -19,14 +19,16 @@
         <TextView
             style="@style/settingsMainText"
             android:layout_marginStart="28dp"
-            android:text="@string/search"/>
+            android:text="@string/search" />
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrowback"
             android:layout_gravity="center_vertical"
-            android:background="@null"/>
+            android:background="@null"
+            android:src="@drawable/arrowback"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </FrameLayout>
 
     <FrameLayout
@@ -40,24 +42,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints=""
+            android:background="@drawable/search_field"
             android:drawableStart="@drawable/minisearch"
             android:drawablePadding="8dp"
+            android:textCursorDrawable="@color/background"
             android:hint="@string/search"
-            android:textColor="@color/icon"
-            android:paddingStart="14dp"
             android:inputType="text"
             android:maxLength="25"
             android:maxLines="1"
-            android:background="@drawable/search_field"
-            tools:ignore="TouchTargetSizeCheck"/>
+            android:paddingStart="14dp"
+            android:textColor="@color/icon"
+            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
+
         <ImageView
             android:id="@+id/clear_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
-            android:src="@drawable/cancel"
-            android:paddingEnd="12dp"
             android:background="@null"
-            android:visibility="gone"/>
+            android:paddingEnd="12dp"
+            android:src="@drawable/cancel"
+            android:visibility="gone" />
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trackList"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
 </LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:theme="@style/Tracklist.Theme.KotlinPlaylistMaker">
+
+    <ImageView
+        android:id="@+id/trackimage"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:layout_marginTop="@dimen/image_margin_top_bottom"
+        android:layout_marginBottom="@dimen/image_margin_top_bottom"
+        android:background="@drawable/round_outline"
+        android:clipToOutline="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        style="@style/tracktext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin_start"
+        android:layout_marginTop="@dimen/text_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/trackimage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/sample"/>
+        <TextView
+            android:id="@+id/artistTextView"
+            style="@style/artisttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_margin_bottom"
+            android:drawableEnd="@drawable/ellipse"
+            android:drawablePadding="@dimen/drawable_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/artistTimeTextView"
+            app:layout_constraintStart_toStartOf="@+id/nameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            android:text="@string/sample"/>
+
+    <TextView
+        android:id="@+id/artistTimeTextView"
+        style="@style/artisttext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/drawable_padding"
+        android:layout_marginBottom="@dimen/text_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nameTextView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/artistTextView"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        android:text="@string/sample"/>
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/right_image_size"
+        android:layout_height="@dimen/right_image_size"
+        android:layout_marginStart="@dimen/right_image_margin_start"
+        android:layout_marginTop="@dimen/right_image_margin_top_bottom"
+        android:layout_marginBottom="@dimen/right_image_margin_top_bottom"
+        android:src="@drawable/lightmode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

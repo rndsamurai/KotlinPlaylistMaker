@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Размеры ImageView -->
+    <dimen name="image_size">45dp</dimen>
+    <dimen name="image_margin_top_bottom">8dp</dimen>
+    <dimen name="image_margin_start">13dp</dimen>
+
+    <!-- Отступы TextView -->
+    <dimen name="text_margin_start">16dp</dimen>
+    <dimen name="text_margin_top">8dp</dimen>
+    <dimen name="text_margin_bottom">8dp</dimen>
+    <dimen name="drawable_padding">5dp</dimen>
+
+    <!-- Размеры ImageView справа -->
+    <dimen name="right_image_size">24dp</dimen>
+    <dimen name="right_image_margin_start">8dp</dimen>
+    <dimen name="right_image_margin_top_bottom">18dp</dimen>
+
+    <!-- Общая высота элемента -->
+    <dimen name="list_item_height">61dp</dimen>
+</resources>
