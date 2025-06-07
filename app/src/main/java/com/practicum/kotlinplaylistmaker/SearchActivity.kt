@@ -1,10 +1,6 @@
 package com.practicum.kotlinplaylistmaker
 
-import android.app.Activity
-import android.content.Intent
-import android.hardware.SensorAdditionalInfo
 import android.os.Bundle
-import android.os.Message
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -15,29 +11,21 @@ import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentContainer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
-import java.sql.Time
-import kotlin.random.Random
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var searchEditText: EditText
-    private lateinit var contentContainer: FrameLayout
-    private lateinit var placeholderMessage: TextView
-    private lateinit var tracklistErrorView: View
     private lateinit var refresh: Button
     private var searchQuery: String? = null
     private val iTunesBaseUrl = "https://itunes.apple.com"
@@ -46,8 +34,9 @@ class SearchActivity : AppCompatActivity() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     private val iTunesService = retrofit.create(ITunesApi::class.java)
-    private val tracks = ArrayList<Track>()
+    private val tracks = mutableListOf<Track>()
     private val adapter = TrackAdapter(tracks)
+
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -59,78 +48,83 @@ class SearchActivity : AppCompatActivity() {
         searchQuery = savedInstanceState.getString("search_query")
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
-        val recycler = findViewById<RecyclerView>(R.id.trackList)
         val tracksArray = ArrayList<Track>()
         val inputEditText = findViewById<EditText>(R.id.inputEditText)
         val clearButton = findViewById<ImageView>(R.id.clear_text)
         val backButton = findViewById<ImageButton>(R.id.back_button)
-        tracklistErrorView = layoutInflater.inflate(R.layout.tracklist_error, null)
-        refresh = tracklistErrorView.findViewById(R.id.refresh)
-        contentContainer = findViewById<FrameLayout>(R.id.pomogite)
-        placeholderMessage = findViewById<TextView>(R.id.placeholdermessage)
+        val errorView = findViewById<View>(R.id.errorView)
+        val nothingView = findViewById<View>(R.id.nothingView)
+        val recycler = findViewById<RecyclerView>(R.id.trackList)
+        refresh = errorView.findViewById(R.id.refresh)
         adapter.tracks = tracks
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.adapter = TrackAdapter(tracksArray)
 
         fun showErrorView() {
-            val errorView = layoutInflater.inflate(R.layout.tracklist_error, null)
-            contentContainer.removeAllViews()
-            contentContainer.addView(errorView)
+            errorView.isVisible = true
+            recycler.isVisible = false
+            nothingView.isVisible = false
         }
-
         fun showNothingView() {
-            val nothingView = layoutInflater.inflate(R.layout.tracklist_nothing, null)
-            contentContainer.removeAllViews()
-            contentContainer.addView(nothingView)
+            errorView.isVisible = false
+            recycler.isVisible = false
+            nothingView.isVisible = true
+        }
+        fun showRecyclerView() {
+            errorView.isVisible = false
+            recycler.isVisible = true
+            nothingView.isVisible = false
         }
 
-        fun showRecyclerView() {
-            contentContainer.removeAllViews()
-            contentContainer.addView(recycler)
-        }
+
+        fun startSearch() {iTunesService.searchTracks(inputEditText.text.toString())
+            .enqueue(object : Callback<TracksResponse> {
+                override fun onResponse(
+                    call: Call<TracksResponse?>,
+                    response: Response<TracksResponse?>
+                ) {
+                    if (response.isSuccessful) {
+                        tracksArray.clear()
+                        if (response.body()?.results?.isNotEmpty() == true) {
+                            tracksArray.addAll(response.body()?.results!!)
+                            adapter.notifyDataSetChanged()
+                        }
+                        if (tracksArray.isEmpty()) {
+                            showNothingView()
+                        } else {
+                            showRecyclerView()
+                        }
+                    } else {
+                        showErrorView()
+                        response.code().toString()
+                    }
+                }
+
+                override fun onFailure(
+                    call: Call<TracksResponse?>,
+                    t: Throwable
+                ) {
+                    showErrorView()
+                    t.message.toString()
+                }
+            })}
 
         inputEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                iTunesService.searchTracks(inputEditText.text.toString())
-                    .enqueue(object : Callback<TracksResponse> {
-                        override fun onResponse(
-                            call: Call<TracksResponse?>,
-                            response: Response<TracksResponse?>
-                        ) {
-                            if (response.code() == 200) {
-                                tracksArray.clear()
-                                if (response.body()?.results?.isNotEmpty() == true) {
-                                    tracksArray.addAll(response.body()?.results!!)
-                                    adapter.notifyDataSetChanged()
-                                }
-                                if (tracksArray.isEmpty()) {
-                                    showNothingView()
-                                } else {
-                                    showRecyclerView()
-                                }
-                            } else {
-                                showErrorView()
-                                response.code().toString()
-                            }
-                        }
-
-                        override fun onFailure(
-                            call: Call<TracksResponse?>,
-                            t: Throwable
-                        ) {
-                            showErrorView()
-                            t.message.toString()
-                        }
-                    })
+                startSearch()
                 true
             } else {
                 false
             }
         }
+        refresh.setOnClickListener {
+            startSearch()
+        }
+
 
             backButton.setOnClickListener {
                 finish()
@@ -172,19 +166,11 @@ class SearchActivity : AppCompatActivity() {
             clearButton.setOnClickListener {
                 inputEditText.setText("")
                 hideKeyboard(inputEditText)
-                contentContainer.removeAllViews()
+                errorView.isVisible = false
+                recycler.isVisible = false
+                nothingView.isVisible = false
+
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 

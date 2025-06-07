@@ -7,7 +7,7 @@
     android:theme="@style/Tracklist.Theme.KotlinPlaylistMaker">
 
     <TextView
-        android:id="@+id/errormessgage"
+        android:id="@+id/error_messgage"
         style="@style/errortext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/errormessgagesecond"
+        android:id="@+id/error_messgage_second"
         style="@style/errortext"
         android:layout_width="346dp"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.603" />
 
     <ImageView
-        android:id="@+id/errorimage"
+        android:id="@+id/error_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/internet"

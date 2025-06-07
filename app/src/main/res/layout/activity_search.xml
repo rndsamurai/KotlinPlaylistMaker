@@ -77,12 +77,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="SpeakableTextPresentCheck"/>
-    <TextView
-        android:id="@+id/placeholdermessage"
+    <include
+        android:id="@+id/errorView"
+        layout="@layout/tracklist_error"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text=""/>
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/nothingView"
+        layout="@layout/tracklist_nothing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 </FrameLayout>
 
 
