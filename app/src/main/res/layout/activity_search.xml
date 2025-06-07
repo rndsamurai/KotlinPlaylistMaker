@@ -52,6 +52,8 @@
             android:maxLines="1"
             android:paddingStart="14dp"
             android:textColor="@color/icon"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
         <ImageView
@@ -63,14 +65,25 @@
             android:paddingEnd="12dp"
             android:src="@drawable/cancel"
             android:visibility="gone" />
-    </FrameLayout>
 
+    </FrameLayout>
+<FrameLayout
+    android:id="@+id/pomogite"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trackList"
         android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"/>
+    <TextView
+        android:id="@+id/placeholdermessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:text=""/>
+</FrameLayout>
 
 
 </LinearLayout>
