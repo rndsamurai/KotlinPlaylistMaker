@@ -27,7 +27,9 @@
         <item name="android:textColor">@color/totalblack</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="color">@color/textgray</item>
+        <item name="colorPrimary">@color/icon</item>
         <item name="colorSecondary">@color/textgray</item>
+        <item name="colorSecondaryVariant">@color/white</item>
     </style>
 
     <style name="Theme.KotlinPlaylistMaker" parent="Base.Theme.KotlinPlaylistMaker" />

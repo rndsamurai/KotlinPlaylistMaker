@@ -24,7 +24,9 @@
         <item name="android:textColorHint">@color/icon</item>
         <item name="drawableTint">@color/white</item>
         <item name="color">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorSecondary">@color/white</item>
+        <item name="colorSecondaryVariant">@color/icon</item>
     </style>
     <style name="Theme.KotlinPlaylistMaker" parent="Base.Theme.KotlinPlaylistMaker" />
 </resources>
